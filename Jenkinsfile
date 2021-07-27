@@ -4,10 +4,11 @@ pipeline {
         stage('Setup') {
             steps {
                 script {
-                    startZap(host: localhost, port: 5555, timeout:500, zapHome: ".ZAP",  allowedHosts:['https://akilaliyanage.github.io']) // Start ZAP at /opt/zaproxy/zap.sh, allowing scans on github.com
+                    startZap(host: 127.0.0.1, port: 9091, timeout:500, zapHome: "/opt/zaproxy", sessionPath:"/somewhere/session.session", allowedHosts:['github.com']) // Start ZAP at /opt/zaproxy/zap.sh, allowing scans on github.com
                 }
             }
         }
+    }
     post {
         always {
             script {
